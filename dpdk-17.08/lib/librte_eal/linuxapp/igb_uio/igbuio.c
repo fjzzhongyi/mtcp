@@ -455,7 +455,7 @@ igbuio_pci_probe(struct pci_dev *dev, const struct pci_device_id *id)
 #endif
 		/* fall back to INTX */
 	case RTE_INTR_MODE_LEGACY:
-		if (pci_intx_mask_supported(dev)) {
+		if (pci_intx_mask_supported(dev)|| 1) {
 			dev_dbg(&dev->dev, "using INTX");
 			udev->info.irq_flags = IRQF_SHARED | IRQF_NO_THREAD;
 			udev->info.irq = dev->irq;
