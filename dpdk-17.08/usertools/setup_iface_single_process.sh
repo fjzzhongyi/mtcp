@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # check if there is only one additional command-line argument
-if [ $# -ne 1 ]
-then
-    echo "Usage:"
-    echo "$0 <4th-ip-octet-value>"
-    exit 1
-fi
+#if [ $# -ne 1 ]
+#then
+#    echo "Usage:"
+#    echo "$0 <4th-ip-octet-value>"
+#    exit 1
+#fi
 
 # Check if you are root
 user=`whoami`
@@ -44,9 +44,11 @@ done
 cd -
 
 # Configure each device (single-process version)
-while [ $counter -gt 0 ]
-do
-    echo "/sbin/ifconfig dpdk$(($counter - 1)) 10.0.$(( $counter - 1 )).$1 netmask 255.255.255.0 up"
-    /sbin/ifconfig dpdk$(($counter - 1)) 10.0.$(($counter - 1)).$1 netmask 255.255.255.0 up
-    let "counter=$counter - 1"
-done
+#while [ $counter -gt 0 ]
+#do
+#    echo "/sbin/ifconfig dpdk$(($counter - 1)) 10.0.$(( $counter - 1 )).$1 netmask 255.255.255.0 up"
+#    /sbin/ifconfig dpdk$(($counter - 1)) 192.168.184.$(($counter+200)) netmask 255.255.255.0 up
+#    let "counter=$counter - 1"
+#done
+
+# hhy: you need to ifconfig your eth prepared for dpdk like above
