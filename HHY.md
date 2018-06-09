@@ -1,7 +1,7 @@
-# Hints for DPDK and mTCP
+# Hints for DPDK and DPDK-based mTCP
 
 DPDK is build on [PSIO](http://shader.kaist.edu/packetshader/io_engine/) or [DPDK](dpdk.org). It's mentioned that only linux kernel 2.6.* supports PSIO ([Ubuntu]() 11.04 or earlier). Hence DPDK is optimal choice.
-### DPDK Setup
+## DPDK
 #### Requirements
  * prepare package `numa` before installing dpdk
 #### Environment
@@ -41,9 +41,10 @@ cd DPDK-17.08
 4. configure NIC
     * ensure that NICs are DPDK-supported.
     * deactive interfaces before binding them to DPDK
-    ``` 
-    ifconfig eth* down
-    ```
+        ``` 
+        ifconfig eth* down
+        ```
+    * bind them to DPDK driver using `usertools/dpdk-setup.sh` (enter **PCI address** for per NIC, e.g. 02:02.0)
 5. test your DPDK installation like [DPDK](dpdk.org)
     ```
     sudo ./build/app/testpmd -c7 -n3 -- -i --nb-cores=2 --nb-ports=2
@@ -51,6 +52,7 @@ cd DPDK-17.08
     testpmd> start tx_first
     testpmd> stop
     ```
+    > when pressing `stop`, non-zero statistics hit the success 
 6. run applications/examples, but it may require some undefined envrionment variables
     ```sh
     $ export RTE_SDK=/home/yml/dpdk/dpdk-*    
@@ -66,8 +68,9 @@ cd DPDK-17.08
 |invalid numa socket |just ignore|
 |No free hugepages reported in ...| just ignore|
 
+___
 
-### mTCP
+## mTCP
 #### Requirements
 - install `autotools-dev`
 #### INSTALLATION
@@ -95,5 +98,30 @@ cd DPDK-17.08
 |Error | Hint |
 |------|------|
 |Cause: Cannot configure device: err=-22, port=0| using ***emulated e1000*** device incurs that only **1 RX** and **1 TX** queue per NIC are supported. Hence add `num_cores = 1` to config files.|
-|about **buffer/memory**| These errors always occur in server side. When `max_num_buffers ` is too large, it crashes, I assigned many hugepages though; The same when `rcvbuf` or `sndbuf` is too large. No solutions still.|
+|about **buffer/memory**| These errors always occur in server side. When `max_num_buffers ` or `max_concurrency` is too large, it crashes, I assigned many hugepages though; The same when `rcvbuf` or `sndbuf` is too large. No solutions still.|
 
+#### Results
+For limitations for virtual NICs, I config both `epwget` and `epserver` as 
+    
+    num_cores =1  ## single core
+    max_concurrency = 10000
+    max_num_buffers = 10000
+    rcvbuf = 8196
+    sndbuf = 8196
+
+and run `$connections` in client as 1000, 2000, 3000, 4000 respectively. The client is sending requests to fetch fixed-size file (i.e. **64B** txt file) in parallel(multi-connections).
+> For `max_concurrency` limit in server, I fail to run too many connections (i.e. 5000) during experiments.
+
+The results show that mTCP in our setup (Intel ) performs **twice** better than reports from paper( $$2*10^5$$ transactions per second).
+> Different envrionment may contribute to differential results. With VM setup, packet latency should be smaller than true physical setup, although processing rate is less efficient in VMs. Moreover, I didn't set vm configure virtually equivalent to pm since their hardware configs are naturally different.
+> I test `ping` using two **virtual** machines (about 0.4 ms) and two **physical** machines(about 1.3ms).
+
+
+
+
+
+
+
+
+
+    
