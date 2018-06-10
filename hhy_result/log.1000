@@ -1,0 +1,110 @@
+---------------------------------------------------------------------------------
+Loading mtcp configuration from : epwget.conf
+Loading interface setting
+EAL: Detected 16 lcore(s)
+EAL: Auto-detected process type: PRIMARY
+EAL: No free hugepages reported in hugepages-1048576kB
+Application configuration:
+URL: /example.txt
+# of total_flows: 5000000
+# of cores: 16
+Concurrency: 1000
+EAL: Probing VFIO support...
+EAL: PCI device 0000:02:01.0 on NUMA socket -1
+EAL:   Invalid NUMA socket, default to 0
+EAL:   probe driver: 8086:100f net_e1000_em
+EAL: PCI device 0000:02:02.0 on NUMA socket -1
+EAL:   Invalid NUMA socket, default to 0
+EAL:   probe driver: 8086:100f net_e1000_em
+EAL: PCI device 0000:02:07.0 on NUMA socket -1
+EAL:   Invalid NUMA socket, default to 0
+EAL:   probe driver: 8086:100f net_e1000_em
+Total number of attached devices: 1
+Interface name: dpdk0
+Total number of attached devices: 2
+Interface name: dpdk1
+EAL: Auto-detected process type: PRIMARY
+Configurations:
+Number of CPU cores available: 1
+Number of CPU cores to use: 1
+Maximum number of concurrency per core: 10000
+Maximum number of preallocated buffers per core: 10000
+Receive buffer size: 8192
+Send buffer size: 8192
+TCP timeout seconds: 30
+TCP timewait seconds: 0
+NICs to print statistics: dpdk0
+---------------------------------------------------------------------------------
+Interfaces:
+name: dpdk0, ifindex: 0, hwaddr: 00:0C:29:D9:4C:54, ipaddr: 192.168.10.10, netmask: 255.255.255.0
+name: dpdk1, ifindex: 1, hwaddr: 00:0C:29:D9:4C:5E, ipaddr: 192.168.10.20, netmask: 255.255.255.0
+Number of NIC queues: 1
+---------------------------------------------------------------------------------
+Loading routing configurations from : config/route.conf
+Routes:
+Destination: 192.168.10.0/24, Mask: 255.255.255.0, Masked: 192.168.10.0, Route: ifdx-0
+Destination: 192.168.10.0/24, Mask: 255.255.255.0, Masked: 192.168.10.0, Route: ifdx-1
+Destination: 192.168.10.0/24, Mask: 255.255.255.0, Masked: 192.168.10.0, Route: ifdx-0
+Destination: 192.168.10.0/24, Mask: 255.255.255.0, Masked: 192.168.10.0, Route: ifdx-1
+---------------------------------------------------------------------------------
+Loading ARP table from : config/arp.conf
+ARP Table:
+IP addr: 192.168.10.30, dst_hwaddr: 00:0C:29:1C:4F:75
+IP addr: 192.168.10.40, dst_hwaddr: 00:0C:29:1C:4F:7F
+---------------------------------------------------------------------------------
+Initializing port 0... done: 
+Initializing port 1... done: 
+
+Checking link statusConfiguration updated by mtcp_setconf().
+CPU 0: initialization finished.
+[mtcp_create_context:1260] CPU 0 is now the master thread.
+Thread 0 handles 312500 flows. connecting to 192.168.10.30:80
+[CPU 0] dpdk0 flows:     62, RX:       0(pps) (err:     0),  0.00(Gbps), TX:      62(pps),  0.00(Gbps)
+[ ALL ] dpdk0 flows:     62, RX:       0(pps) (err:     0),  0.00(Gbps), TX:      62(pps),  0.00(Gbps)
+Learned new arp entry.
+ARP Table:
+IP addr: 192.168.10.30, dst_hwaddr: 00:0C:29:1C:4F:75
+IP addr: 192.168.10.40, dst_hwaddr: 00:0C:29:1C:4F:7F
+IP addr: 192.168.10.10, dst_hwaddr: 00:0C:29:D9:4C:54
+---------------------------------------------------------------------------------
+Learned new arp entry.
+ARP Table:
+IP addr: 192.168.10.30, dst_hwaddr: 00:0C:29:1C:4F:75
+IP addr: 192.168.10.40, dst_hwaddr: 00:0C:29:1C:4F:7F
+IP addr: 192.168.10.10, dst_hwaddr: 00:0C:29:D9:4C:54
+IP addr: 192.168.10.20, dst_hwaddr: 00:0C:29:D9:4C:5E
+---------------------------------------------------------------------------------
+Response size set to 204
+[ ALL ] connect:   12827, read:    2 MB, write:    1 MB, completes:   12457 (resp_time avg:   59, max:   3572 us)
+[CPU 0] dpdk0 flows:     99, RX:  185517(pps) (err:     0),  0.20(Gbps), TX:  458406(pps),  0.37(Gbps)
+[ ALL ] dpdk0 flows:     99, RX:  185517(pps) (err:     0),  0.20(Gbps), TX:  458406(pps),  0.37(Gbps)
+[  ARPTimer: 323] [CPU 0] ARP request for 192.168.10.10 timed out.
+[ ALL ] connect:   36341, read:    6 MB, write:    3 MB, completes:   35196 (resp_time avg:   60, max:   6873 us)
+[CPU 0] dpdk0 flows:     90, RX:  178198(pps) (err:     0),  0.19(Gbps), TX:  447682(pps),  0.36(Gbps)
+[ ALL ] dpdk0 flows:     90, RX:  178198(pps) (err:     0),  0.19(Gbps), TX:  447682(pps),  0.36(Gbps)
+[ ALL ] connect:   36444, read:    6 MB, write:    3 MB, completes:   32759 (resp_time avg:   57, max:   4187 us)
+[CPU 0] dpdk0 flows:     96, RX:  169169(pps) (err:     0),  0.18(Gbps), TX:  442582(pps),  0.35(Gbps)
+[ ALL ] dpdk0 flows:     96, RX:  169169(pps) (err:     0),  0.18(Gbps), TX:  442582(pps),  0.35(Gbps)
+[ ALL ] connect:   33949, read:    6 MB, write:    3 MB, completes:   33444 (resp_time avg:   55, max:   8868 us)
+[CPU 0] dpdk0 flows:    108, RX:  162443(pps) (err:     0),  0.17(Gbps), TX:  424283(pps),  0.34(Gbps)
+[ ALL ] dpdk0 flows:    108, RX:  162443(pps) (err:     0),  0.17(Gbps), TX:  424283(pps),  0.34(Gbps)
+[ ALL ] connect:   33896, read:    6 MB, write:    3 MB, completes:   30906 (resp_time avg:   54, max:   7994 us)
+[CPU 0] dpdk0 flows:     75, RX:  172886(pps) (err:     0),  0.18(Gbps), TX:  452156(pps),  0.36(Gbps)
+[ ALL ] dpdk0 flows:     75, RX:  172886(pps) (err:     0),  0.18(Gbps), TX:  452156(pps),  0.36(Gbps)
+[ ALL ] connect:   35030, read:    6 MB, write:    3 MB, completes:   33720 (resp_time avg:   53, max:   2900 us)
+[CPU 0] dpdk0 flows:     92, RX:  176265(pps) (err:     0),  0.19(Gbps), TX:  454627(pps),  0.36(Gbps)
+[ ALL ] dpdk0 flows:     92, RX:  176265(pps) (err:     0),  0.19(Gbps), TX:  454627(pps),  0.36(Gbps)
+[ ALL ] connect:   35804, read:    6 MB, write:    3 MB, completes:   34201 (resp_time avg:   54, max:   3112 us)
+[CPU 0] dpdk0 flows:    115, RX:  176790(pps) (err:     0),  0.19(Gbps), TX:  456872(pps),  0.36(Gbps)
+[ ALL ] dpdk0 flows:    115, RX:  176790(pps) (err:     0),  0.19(Gbps), TX:  456872(pps),  0.36(Gbps)
+[ ALL ] connect:   35239, read:    6 MB, write:    3 MB, completes:   33608 (resp_time avg:   54, max:   3042 us)
+[CPU 0] dpdk0 flows:     89, RX:  158606(pps) (err:     0),  0.17(Gbps), TX:  415854(pps),  0.33(Gbps)
+[ ALL ] dpdk0 flows:     89, RX:  158606(pps) (err:     0),  0.17(Gbps), TX:  415854(pps),  0.33(Gbps)
+[ ALL ] connect:   38968, read:    5 MB, write:    3 MB, completes:   28416 (resp_time avg:   56, max:   3378 us)
+[RunMainLoop: 864] MTCP thread 0 finished.
+[mtcp_free_context:1304] MTCP thread 0 joined.
+[mtcp_destroy:1561] All MTCP threads are joined.
+done
+Port 0 Link Up - speed 1000 Mbps - full-duplex
+Port 1 Link Up - speed 1000 Mbps - full-duplex
+[CPU 0] Completed 312500 connections, errors: 16365 incompletes: 8039
