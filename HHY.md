@@ -112,7 +112,7 @@ For limitations for virtual NICs, I config both `epwget` and `epserver` as
 and run `$connections` in client as 1000, 2000, 3000, 4000 respectively. The client is sending requests to fetch fixed-size file (i.e. **64B** txt file) in parallel(multi-connections).
 > For `max_concurrency` limit in server, I fail to run too many connections (i.e. 5000) during experiments.
 
-The results show that mTCP in our setup (Intel ) performs **twice** better than reports from paper( $$2*10^5$$ transactions per second).
+The results(in `hhy_result/`) show that mTCP in our setup (Intel ) performs **twice** better than reports from paper( $$2*10^5$$ transactions per second).
 > Different envrionment may contribute to differential results. With VM setup, packet latency should be smaller than true physical setup, although processing rate is less efficient in VMs. Moreover, I didn't set vm configure virtually equivalent to pm since their hardware configs are naturally different.
 > I test `ping` using two **virtual** machines (about 0.4 ms) and two **physical** machines(about 1.3ms).
 
